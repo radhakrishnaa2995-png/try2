@@ -1,0 +1,2 @@
+Create a space trivia + puzzle book for kids ages 7-11.
+Include planets, astronauts, stars, rockets, and solar system facts.
