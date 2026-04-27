@@ -1,0 +1,43 @@
+name: Build KDP Puzzle Book
+
+on:
+  workflow_dispatch:
+    inputs:
+      title:
+        description: "Book title"
+        required: false
+        default: "Dinosaur Trivia & Puzzle Fun"
+      theme:
+        description: "Book theme"
+        required: false
+        default: "dinosaurs"
+  schedule:
+    - cron: "0 3 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate KDP PDF
+        run: |
+          python scripts/generate_book.py \
+            --title "${{ github.event.inputs.title || 'Dinosaur Trivia & Puzzle Fun' }}" \
+            --theme "${{ github.event.inputs.theme || 'dinosaurs' }}"
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: kdp-puzzle-book
+          path: output/*.pdf
