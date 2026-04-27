@@ -1,0 +1,2 @@
+Create a dinosaur trivia + puzzle book for kids ages 6-10.
+Include trivia questions, word searches, crossword-style clues, and answer keys.
