@@ -1,0 +1,2 @@
+Create an animal trivia + puzzle book for kids ages 6-10.
+Include wild animals, farm animals, pets, birds, and ocean animals.
